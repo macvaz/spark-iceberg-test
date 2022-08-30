@@ -20,3 +20,11 @@ spark.sql("CREATE TABLE IF NOT EXISTS iceberg.db.states (name string) USING iceb
 df.writeTo("iceberg.db.states").append()
 
 spark.read.table("iceberg.db.states").show
+
+spark.sql("""
+MERGE INTO iceberg.db.states d 
+USING (SELECT * from iceberg.db.states) s   
+ON s.name = d.name
+WHEN MATCHED THEN UPDATE SET d.name = 1
+WHEN NOT MATCHED THEN INSERT *
+""")
