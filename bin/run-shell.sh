@@ -4,7 +4,9 @@ SPARK_VERSION=3.2
 SCALA_VERSION=2.12
 ICEBERG_VERSION=0.13.2
 
-./spark-shell \
+SPARK_HOME=/home/mac/spark-3.2.1-bin-hadoop3.2/bin
+
+$SPARK_HOME/spark-shell \
    --packages org.apache.iceberg:iceberg-spark-runtime-${SPARK_VERSION}_${SCALA_VERSION}:${ICEBERG_VERSION} \
    --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
    --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
