@@ -1,6 +1,9 @@
 import org.apache.spark.sql._
 import org.apache.spark.sql.types._
 
+///////////
+// Read raw data
+
 val dataPath = "/home/mac/IdeaProjects/spark-iceberg-test/data/"
 val masterTable = "iceberg.db.operations"
 
